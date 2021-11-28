@@ -9,6 +9,7 @@ const useStyles = createStyles((theme) => ({
     display: 'grid',
     gridTemplateRows: '300px auto',
     backgroundColor: theme.colors.gray[1],
+    height: '100%',
   },
   searchHeader: {
     paddingRight: theme.spacing.xl,

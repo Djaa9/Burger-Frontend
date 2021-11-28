@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Paper, TextInput, Container, Button, createStyles, Anchor } from '@mantine/core';
+import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../assets/logo.svg';
 
 const useStyles = createStyles((theme) => ({
@@ -54,7 +55,9 @@ export const Login: FC = () => {
           <TextInput label="Password" type="password" />
           <div className={classes.actions}>
             <Anchor>Forgot password?</Anchor>
-            <Button uppercase>Login</Button>
+            <Button component={Link} to="/" style={{ textDecoration: 'none', color: 'white' }}>
+              Login
+            </Button>
           </div>
         </Paper>
       </Container>
