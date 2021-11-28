@@ -4,8 +4,10 @@ import { AppRoutes } from './routes/appRoutes';
 
 export const App: FC = () => {
   return (
-    <AppProviders>
-      <AppRoutes />
-    </AppProviders>
+    <div style={{ height: '100vh' }}>
+      <AppProviders>
+        <AppRoutes />
+      </AppProviders>
+    </div>
   );
 };
