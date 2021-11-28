@@ -33,13 +33,13 @@ export interface Adress {
 }
 
 export interface OpeningHours {
-  monday: { from: Date; to: Date };
-  tuesday: { from: Date; to: Date };
-  wednesday: { from: Date; to: Date };
-  thursday: { from: Date; to: Date };
-  friday: { from: Date; to: Date };
-  saturday: { from: Date; to: Date };
-  sunday: { from: Date; to: Date };
+  monday: { from: string; to: string };
+  tuesday: { from: string; to: string };
+  wednesday: { from: string; to: string };
+  thursday: { from: string; to: string };
+  friday: { from: string; to: string };
+  saturday: { from: string; to: string };
+  sunday: { from: string; to: string };
 }
 
 export enum Score {
