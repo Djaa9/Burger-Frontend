@@ -10,7 +10,7 @@ export const AppProviders: FC<AppProviderProps> = ({ children }) => {
   return (
     <Suspense fallback="Loading ...">
       <MantineProvider theme={theme}>
-        <TypographyStylesProvider>{children}</TypographyStylesProvider>
+        <TypographyStylesProvider style={{ height: '100%' }}>{children}</TypographyStylesProvider>
       </MantineProvider>
     </Suspense>
   );
