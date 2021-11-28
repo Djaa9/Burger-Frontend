@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Paper, Title, Text, TextInput, Container, Button, createStyles, Anchor, useMantineTheme } from '@mantine/core';
+import { Paper, TextInput, Container, Button, createStyles, Anchor } from '@mantine/core';
 import { ReactComponent as Logo } from '../assets/logo.svg';
 
 const useStyles = createStyles((theme) => ({
