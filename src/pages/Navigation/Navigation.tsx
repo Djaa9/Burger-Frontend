@@ -1,5 +1,5 @@
-import { useMantineTheme, AppShell, Navbar, Header, Text, MediaQuery, Burger, createStyles } from '@mantine/core';
 import React, { FC, useState } from 'react';
+import { useMantineTheme, AppShell, Navbar, Header, Text, MediaQuery, Burger, createStyles } from '@mantine/core';
 import { Route, Routes, Navigate } from 'react-router';
 import { FrontPage } from './FrontPage/FrontPage';
 import { Restaurent } from './Restaurent/Restaurent';
@@ -18,6 +18,7 @@ export const Navigation: FC = () => {
   return (
     <AppShell
       navbarOffsetBreakpoint="sm"
+      padding={0}
       fixed
       navbar={
         <Navbar className={classes.navBar} padding="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 300 }}>
