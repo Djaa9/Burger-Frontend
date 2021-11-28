@@ -1,7 +1,11 @@
 import React, { FC } from 'react';
+import { AppProviders } from './providers/app';
+import { AppRoutes } from './routes/appRoutes';
 
-const App: FC = () => {
-  return <div className="App">Burger app goes here</div>;
+export const App: FC = () => {
+  return (
+    <AppProviders>
+      <AppRoutes />
+    </AppProviders>
+  );
 };
-
-export default App;
