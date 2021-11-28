@@ -6,11 +6,12 @@ export interface User {
 
 export interface Review {
   id: string;
+  time: Date;
   title: string;
   description?: string;
   restaurentId: string;
   menuItem: string;
-  image: URL;
+  image: string;
   tasteScore: Score;
   textureScore: Score;
   visualPresentaionScore: Score;

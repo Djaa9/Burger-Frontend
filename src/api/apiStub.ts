@@ -3,6 +3,7 @@ import { Restaurent, Review, Score } from './definitions';
 const reviewDb: Review[] = [
   {
     id: '1',
+    time: new Date(Date.now() - Math.random() * 100),
     menuItem: 'Big burger',
     restaurentId: '1',
     title: 'Great burgers ...!',
@@ -11,10 +12,11 @@ const reviewDb: Review[] = [
     tasteScore: Score.Great,
     visualPresentaionScore: Score.Excellent,
     textureScore: Score.Bad,
-    image: new URL(`${process.env.PUBLIC_URL}'/img/sk-CK6tjAIMJWM-unsplash.jpg'`),
+    image: '/img/sk-CK6tjAIMJWM-unsplash.jpg',
   },
   {
     id: '2',
+    time: new Date(Date.now() - Math.random() * 100),
     menuItem: 'Cheese burger',
     restaurentId: '2',
     title: 'Ok i guess',
@@ -23,10 +25,11 @@ const reviewDb: Review[] = [
     tasteScore: Score.Bad,
     visualPresentaionScore: Score.Mediocre,
     textureScore: Score.Great,
-    image: new URL(`${process.env.PUBLIC_URL}'/img/pexels-roman-odintsov-4871115.jpg'`),
+    image: '/img/pexels-roman-odintsov-4871115.jpg',
   },
   {
     id: '3',
+    time: new Date(Date.now() - Math.random() * 100),
     menuItem: 'No. 3',
     restaurentId: '3',
     title: 'My goto place',
@@ -35,10 +38,11 @@ const reviewDb: Review[] = [
     tasteScore: Score.Excellent,
     visualPresentaionScore: Score.Excellent,
     textureScore: Score.Mediocre,
-    image: new URL(`${process.env.PUBLIC_URL}'/img/pexels-engin-akyurt-2725744.jpg'`),
+    image: '/img/pexels-engin-akyurt-2725744.jpg',
   },
   {
     id: '4',
+    time: new Date(Date.now() - Math.random() * 100),
     menuItem: 'The wammy',
     restaurentId: '4',
     title: 'Too greasy',
@@ -47,10 +51,11 @@ const reviewDb: Review[] = [
     tasteScore: Score.Mediocre,
     visualPresentaionScore: Score.Mediocre,
     textureScore: Score.Bad,
-    image: new URL(`${process.env.PUBLIC_URL}'/img/mae-mu-I7A_pHLcQK8-unsplash.jpg'`),
+    image: '/img/mae-mu-I7A_pHLcQK8-unsplash.jpg',
   },
   {
     id: '5',
+    time: new Date(Date.now() - Math.random() * 100),
     menuItem: 'The Supreme',
     restaurentId: '5',
     title: 'Very big',
@@ -59,10 +64,11 @@ const reviewDb: Review[] = [
     tasteScore: Score.Great,
     visualPresentaionScore: Score.Bad,
     textureScore: Score.Bad,
-    image: new URL(`${process.env.PUBLIC_URL}'/img/jon-parry-4A9IELfRdwE-unsplash.jpg'`),
+    image: '/img/jon-parry-4A9IELfRdwE-unsplash.jpg',
   },
   {
     id: '6',
+    time: new Date(Date.now() - Math.random() * 100),
     menuItem: 'The double double',
     restaurentId: '6',
     title: 'Never again',
@@ -71,10 +77,11 @@ const reviewDb: Review[] = [
     tasteScore: Score.Horrible,
     visualPresentaionScore: Score.Bad,
     textureScore: Score.Bad,
-    image: new URL(`${process.env.PUBLIC_URL}'/img/igor-rand-4LZPmKbgQiQ-unsplash.jog'`),
+    image: '/img/igor-rand-4LZPmKbgQiQ-unsplash.jpg',
   },
   {
     id: '7',
+    time: new Date(Date.now() - Math.random() * 100),
     menuItem: 'Mikes',
     restaurentId: '7',
     title: 'Quite expensive',
@@ -83,7 +90,7 @@ const reviewDb: Review[] = [
     tasteScore: Score.Mediocre,
     visualPresentaionScore: Score.Excellent,
     textureScore: Score.Bad,
-    image: new URL(`${process.env.PUBLIC_URL}'/img/food-photographer-david-fedulov-X92WLoaQ1_o-unsplash.jpg'`),
+    image: '/img/food-photographer-david-fedulov-X92WLoaQ1_o-unsplash.jpg',
   },
 ];
 
@@ -338,7 +345,7 @@ const restaurentDb: Restaurent[] = [
 
 const delayInMilliseconds = 400;
 
-async function useGetAllReviews(): Promise<Review[]> {
+async function getRecentReviews(): Promise<Review[]> {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(reviewDb);
@@ -346,15 +353,18 @@ async function useGetAllReviews(): Promise<Review[]> {
   });
 }
 
-async function useGetRestaurentById(id: string): Promise<Review[]> {
+async function getRestaurentById(id: string): Promise<Restaurent> {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(reviewDb);
+      const result = restaurentDb.find((restaurent) => restaurent.id === id);
+
+      if (!result) throw Error(`Not restaurent found for id: ${id}`);
+      resolve(result);
     }, delayInMilliseconds);
   });
 }
 
-async function useAddReview(newReview: Review): Promise<void> {
+async function addReview(newReview: Review): Promise<void> {
   return new Promise(() => {
     setTimeout(() => {
       reviewDb.push(newReview);
@@ -362,4 +372,10 @@ async function useAddReview(newReview: Review): Promise<void> {
   });
 }
 
-export const api = { useGetAllReviews, useAddReview };
+export const useApi = () => {
+  return {
+    getRecentReviews,
+    getRestaurentById,
+    addReview,
+  };
+};
