@@ -1,5 +1,6 @@
 import { Button, createStyles, Paper, Skeleton, Space, TextInput, Title } from '@mantine/core';
 import React, { FC, useEffect, useState } from 'react';
+import { BsSearch } from 'react-icons/bs';
 import { useApi } from '../../../api/apiStub';
 import { Review } from '../../../api/definitions';
 
@@ -80,6 +81,8 @@ export const FrontPage: FC = () => {
       <div className={classes.searchHeader}>
         <div className={classes.searchField}>
           <TextInput
+            icon={<BsSearch />}
+            placeholder="Search for a place to eat"
             onClick={() => {
               setIsLoading((l) => !l);
             }}
