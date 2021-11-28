@@ -1,5 +1,6 @@
 import React, { FC, Suspense } from 'react';
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider, TypographyStylesProvider } from '@mantine/core';
+import { theme } from '../theme/theme';
 
 interface AppProviderProps {
   children?: React.ReactNode;
@@ -8,7 +9,9 @@ interface AppProviderProps {
 export const AppProviders: FC<AppProviderProps> = ({ children }) => {
   return (
     <Suspense fallback="Loading ...">
-      <MantineProvider>{children}</MantineProvider>
+      <MantineProvider theme={theme}>
+        <TypographyStylesProvider>{children}</TypographyStylesProvider>
+      </MantineProvider>
     </Suspense>
   );
 };

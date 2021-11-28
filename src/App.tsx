@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { AppProviders } from './providers/app';
+import { AppProviders } from './providers/appProvider';
 import { AppRoutes } from './routes/appRoutes';
 
 export const App: FC = () => {
